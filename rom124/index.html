@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>礼拝の復習 | 失われた人間らしさ</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="愛和礼拝">
+<meta name="theme-color" content="#C9A84C">
+
+<!-- OG / カカオトーク共有 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="失われた人間らしさ — ローマ書 1:24–32">
+<meta property="og:description" content="神のかたちを失った人間とは何か。週の黙想・小グループ分かち合い付き礼拝復習アプリ。">
+<meta property="og:image" content="https://easyai7.github.io/aiwa/rom124/og-image.png">
+<meta property="og:url" content="https://easyai7.github.io/aiwa/rom124/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --dark: #1A1410;
+    --dark2: #2C2418;
+    --parchment: #F7F3EC;
+    --parchment2: #EDE6D8;
+    --text: #3D2E1E;
+    --text-light: #7A6A58;
+    --accent: #8B1A1A;
+    --red-dark: #5C1010;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--parchment);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 20px;
+  }
+
+  .header {
+    background: var(--dark);
+    padding: 28px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 20px,
+      rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px);
+  }
+  .header-label { font-size: 16px; font-weight: 300; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .header-title { font-family: 'Noto Serif JP', serif; font-size: 28px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 6px; }
+  .header-ref { font-size: 20px; color: var(--gold-light); font-weight: 300; letter-spacing: 1px; }
+  .gold-bar { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-top: 20px; }
+
+  .tension-box {
+    margin: 20px 16px 0;
+    background: var(--red-dark);
+    border-radius: 12px 12px 0 0;
+    padding: 22px;
+    position: relative; overflow: hidden;
+  }
+  .tension-box::before {
+    content: '✕';
+    font-size: 120px; color: rgba(255,255,255,0.04);
+    position: absolute; right: 10px; top: -10px; line-height: 1;
+  }
+  .tension-label { font-size: 14px; letter-spacing: 3px; color: #ffaaaa; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+  .tension-text { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.7; }
+  .tension-sub { margin-top: 12px; font-size: 18px; color: rgba(255,200,200,0.85); line-height: 1.9; font-weight: 300; }
+
+  .grace-box {
+    margin: 0 16px 20px;
+    background: var(--dark2);
+    border-radius: 0 0 12px 12px;
+    padding: 22px;
+    border-top: 2px solid var(--gold);
+  }
+  .grace-label { font-size: 14px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+  .grace-text { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.7; }
+  .grace-sub { margin-top: 12px; font-size: 18px; color: var(--gold-light); line-height: 1.9; font-weight: 300; }
+
+  .tabs { display: flex; margin: 0 16px; gap: 4px; }
+  .tab {
+    flex: 1; padding: 12px 4px; font-size: 18px; font-weight: 500;
+    text-align: center; background: var(--parchment2); color: var(--text-light);
+    border: none; border-radius: 8px 8px 0 0; cursor: pointer; transition: all 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .tab.active { background: var(--dark); color: var(--gold); }
+
+  .panel {
+    margin: 0 16px 24px; background: #fff;
+    border-radius: 0 0 12px 12px; padding: 22px;
+    display: none; border: 1px solid var(--parchment2); border-top: none;
+  }
+  .panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+  .misread-box {
+    background: #fff5f5; border: 1px solid #ffcccc;
+    border-radius: 10px; padding: 18px; margin-bottom: 24px;
+  }
+  .misread-label { font-size: 16px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+  .misread-text { font-size: 20px; color: var(--text); line-height: 1.9; }
+
+  .note-point {
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px dashed var(--parchment2);
+  }
+  .note-point:last-child { border-bottom: none; margin-bottom: 0; }
+  .note-tag { display: inline-block; background: var(--dark); color: var(--gold); font-size: 15px; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; margin-bottom: 10px; font-weight: 500; }
+  .note-tag.red { background: var(--red-dark); color: #ffaaaa; }
+  .note-text { font-size: 20px; color: var(--text); line-height: 1.9; }
+  .note-verse-ref { margin-top: 8px; font-size: 18px; color: var(--accent); font-style: italic; }
+
+  .btn-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+  .tts-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--dark); color: var(--gold);
+    border: none; border-radius: 20px;
+    padding: 8px 16px; font-size: 16px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .tts-btn:hover { background: #2e1f12; }
+  .tts-btn.playing { background: var(--accent); color: #fff; }
+  .tts-btn .icon { font-size: 16px; }
+
+  .verse-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 20px;
+    padding: 8px 16px; font-size: 16px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .verse-btn:hover { background: #a02020; }
+  .verse-btn.open { background: var(--dark2); color: var(--gold-light); }
+  .verse-btn .icon { font-size: 14px; }
+
+  .verse-box {
+    display: none;
+    margin-top: 12px;
+    background: #fefcf7;
+    border: 1px solid var(--gold-light);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 16px 18px;
+    animation: slideDown 0.3s ease;
+  }
+  .verse-box.open { display: block; }
+  .verse-item { margin-bottom: 14px; }
+  .verse-item:last-child { margin-bottom: 0; }
+  .verse-item-ref { font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+  .verse-item-text { font-family: 'Noto Serif JP', serif; font-size: 18px; color: var(--text); line-height: 1.9; }
+
+  @keyframes slideDown {
+    from { opacity: 0; max-height: 0; transform: translateY(-8px); }
+    to { opacity: 1; max-height: 2000px; transform: translateY(0); }
+  }
+
+  .day-card { margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 16px; }
+  .day-card.red { border-left-color: var(--accent); }
+  .day-label { font-size: 16px; letter-spacing: 2px; color: var(--gold); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+  .day-card.red .day-label { color: var(--accent); }
+  .day-theme { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .day-content { font-size: 20px; color: var(--text-light); line-height: 1.9; }
+  .day-verse { margin-top: 8px; font-size: 18px; color: var(--accent); font-style: italic; }
+
+  .question-intro { background: var(--dark); border-radius: 10px; padding: 20px; margin-bottom: 22px; text-align: center; }
+  .question-intro-top { font-size: 15px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+  .question-intro-text { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 600; color: #fff; line-height: 1.8; }
+
+  .question-card { margin-bottom: 18px; background: var(--parchment); border-radius: 10px; padding: 18px; border: 1px solid var(--parchment2); }
+  .question-card.red { border-left: 4px solid var(--accent); }
+  .question-card.gold { border-left: 4px solid var(--gold); }
+  .q-number { display: inline-block; width: 30px; height: 30px; background: var(--dark); color: var(--gold); font-size: 15px; font-weight: 700; border-radius: 50%; text-align: center; line-height: 30px; margin-bottom: 10px; }
+  .q-text { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 600; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+  .q-guide { font-size: 18px; color: var(--text-light); line-height: 1.8; padding-left: 14px; border-left: 2px solid var(--gold-light); }
+
+  .q-prayer { margin-top: 22px; background: var(--dark); border-radius: 10px; padding: 18px; text-align: center; }
+  .q-prayer-label { font-size: 15px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .q-prayer-text { font-size: 20px; color: #fff; line-height: 1.9; font-weight: 300; }
+
+  .now-playing {
+    display: none;
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: var(--dark); color: var(--gold);
+    padding: 10px 22px; border-radius: 30px;
+    font-size: 16px; font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 100; white-space: nowrap;
+  }
+  .now-playing.show { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px) translateX(-50%); } to { opacity: 1; transform: translateY(0) translateX(-50%); } }
+
+  .footer { text-align: center; padding: 18px; font-size: 16px; color: var(--text-light); letter-spacing: 1px; margin-bottom: 60px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">礼拝の復習</div>
+  <div class="header-title">失われた人間らしさ</div>
+  <div class="header-ref">ローマ人への手紙 1:24–32</div>
+  <div class="gold-bar"></div>
+</div>
+
+<div class="tension-box">
+  <div class="tension-label">まず直視すべき現実</div>
+  <div class="tension-text">神のかたちを失った人間は<br>本来の姿を忘れてしまった</div>
+  <div class="tension-sub">
+    電気が消えた電球のように、形だけが残っている。<br>
+    道徳も、宗教も、文明も、神なしには<br>
+    すべて空虚な積み重ねにすぎない。
+  </div>
+</div>
+<div class="grace-box">
+  <div class="grace-label">しかし — 聖書が宣言する福音</div>
+  <div class="grace-text">イエス・キリストによって<br>神のかたちが回復される</div>
+  <div class="grace-sub">
+    「喜ぶ者といっしょに喜び、泣く者といっしょに泣きなさい」（ローマ 12:15）<br>
+    <strong style="color:var(--gold)">人間らしさの回復こそが、救いの意味です。</strong>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('notes', this)">説教の核心</button>
+  <button class="tab" onclick="showTab('weekly', this)">週の黙想</button>
+  <button class="tab" onclick="showTab('sharing', this)">グループ分かち合い</button>
+</div>
+
+<!-- 説教の核心 -->
+<div class="panel active" id="notes">
+
+  <div class="misread-box">
+    <div class="misread-label">⚠ 現代人が見落としていること</div>
+    <div class="misread-text">
+      今の世界に起きている混乱や不正、道徳の崩壊は、「もともとそういうもの」ではありません。
+      神の恵みが断たれたとき、人間の本来の姿が壊れていく現象です。
+      聖書はこれを「さばき」と呼びます。
+    </div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'intro')"><span class="icon">🔊</span> 聴く</button>
+    </div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag red">神の恵みが断たれること — 第一のさばき</div>
+    <div class="note-text">ローマ1:24、26、28に繰り返し出てくる「引き渡された」という言葉に注目してください。神のさばきとは、神が人に悪いものを追加したのではありません。良いものの供給が止まったことで、人が壊れていくのです。電気が消えた家電製品のように、形は残っても機能しなくなる。それが神の恵みを失った人間の姿です。</div>
+    <div class="note-verse-ref">ローマ 1:24, 26, 28</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point1')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point1')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point1"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag red">非人間化の現れ — 21の罪</div>
+    <div class="note-text">1:26–27の箇所は同性間の罪について述べていますが、これはその問題だけを指しているのではありません。神の秩序が壊れたとき、美しいものが醜くなるという非人間化の象徴として挙げられています。続く1:29–31には21の罪が列挙されています。これらはすべて、神の恵みが断たれた状態で起きる混乱と崩壊です。</div>
+    <div class="note-verse-ref">ローマ 1:26–31</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point2')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point2')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point2"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">人間らしさの本質 — 共感する力</div>
+    <div class="note-text">サイコパスと呼ばれる人格障害があります。自分の痛みには敏感ですが、他者の痛みをまったく感じることができません。だから人を傷つけても何とも思わない。この「共感する力」こそ、神のかたちとして造られた人間の本来の姿です。神は自らの栄光を分かち合うために人間を造られた。だから人間には、喜びも悲しみも分かち合いたいという本能があります。</div>
+    <div class="note-verse-ref">ローマ 12:15 / 創世記 1:27</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point3')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point3')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point3"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">貧富の格差と共感の喪失</div>
+    <div class="note-text">世界の富の50%以上を上位1%が所有していると言われます。もし富める者が自発的に分かち合うなら、この世界は大きく変わるはずです。しかしそれができない。他者の痛みを共感できなくなった心が、神の恵みを失った結果です。強制的な再分配ではなく、共感から生まれる自発的な分かち合いこそが、人間らしさの回復です。</div>
+    <div class="note-verse-ref">ローマ 1:29 / ローマ 12:15</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point4')"><span class="icon">🔊</span> 聴く</button>
+    </div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">さばきの猶予期間の意味</div>
+    <div class="note-text">なぜ神のさばきはすぐに執行されないのでしょうか。ノアの時代も、ロトの時代も、人々は食べ、飲み、家を建て、ごく普通の生活を送っていました。しかし洪水と火は来ました。今この時間は、神の憐れみによって悔い改めの機会として与えられているのです。世俗の成功も幸福も、この期間に許されている執行猶予にすぎません。</div>
+    <div class="note-verse-ref">ローマ 2:4–5 / ルカ 17:27–30</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point5')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point5')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point5"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">人間らしさの回復 — 救いの意味</div>
+    <div class="note-text">信仰生活とは、聖書によって自分の本来の姿を正しく知り、人間らしさを取り戻して生きることです。人間は神の栄光を現すために神のかたちに造られ、罪によってそのかたちを失い、イエス・キリストの十字架によって回復の根拠が備えられました。これを救いと言います。今現れているすべての非人間化の現象は、本来のものではありません。神の恵みが断たれたゆえの、異常な状態です。</div>
+    <div class="note-verse-ref">ローマ 1:28 / マタイ 7:26 / ローマ 12:15</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'close')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'close')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-close"></div>
+  </div>
+
+</div>
+
+<!-- 週の黙想 -->
+<div class="panel" id="weekly">
+
+  <div class="day-card red">
+    <div class="day-label">月曜日</div>
+    <div class="day-theme">神の恵みが支えている日常</div>
+    <div class="day-content">今日の日常の良いことは、自然に起きているのではありません。すべて神の一般恩寵として支えられています。電気のない電球のように、神の恵みが断たれれば人間の本来の機能は失われます。今日の一日を、神の恵みの中に生かされていることへの感謝から始めてください。</div>
+    <div class="day-verse">ローマ 1:24 —「神は彼らを…引き渡された」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'mon')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'mon')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-mon"></div>
+  </div>
+
+  <div class="day-card red">
+    <div class="day-label">火曜日</div>
+    <div class="day-theme">混乱の世界を正しく診断する</div>
+    <div class="day-content">ニュースで見る道徳の崩壊、家族の破綻、社会の混乱。これらは「もともとそういうもの」ではありません。神の秩序が壊れたときに現れる非正常な状態です。聖書の目で世界を見るとき、診断が変わります。問題の根は神から離れたことにあります。</div>
+    <div class="day-verse">ローマ 1:28 —「まともな考えを持つことができなくなった」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'tue')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'tue')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-tue"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">水曜日</div>
+    <div class="day-theme">共感する力を点検する</div>
+    <div class="day-content">今日、誰かの立場に立って考えてみましたか？共感する力は、神のかたちとして造られた人間の本来の姿です。サイコパスが他者の痛みを感じられないように、この力が失われることが非人間化の本質です。今日、身近な人の気持ちに寄り添う一歩を踏み出してください。</div>
+    <div class="day-verse">ローマ 12:15 —「泣く者といっしょに泣きなさい」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'wed')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'wed')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-wed"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">木曜日</div>
+    <div class="day-theme">今この時間は何のために</div>
+    <div class="day-content">神のさばきがすぐに来ない理由があります。神の憐れみが悔い改めへと導くための時間です。世俗の成功、幸せな生活、それ自体は罪ではありません。しかし神から離れたままのすべての活動は、終わりのさばきに向けて怒りを積み重ねているにすぎません。この時間を正しく使っているか問い直してください。</div>
+    <div class="day-verse">ローマ 2:4 —「神の慈愛があなたを悔い改めに導く」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'thu')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'thu')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-thu"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">金曜日</div>
+    <div class="day-theme">「神なしの成功」の正体</div>
+    <div class="day-content">伝道者の書は「日の下のすべては空」と言います。神から離れた人間の宗教も、政治も、学問も、文明も、どんなに素晴らしく見えても、さばきの前には砂の上の家にすぎません。あなたの人生の土台は何の上に置かれていますか？</div>
+    <div class="day-verse">マタイ 7:26 —「砂の上に家を建てた愚かな人」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'fri')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'fri')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-fri"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">土曜日</div>
+    <div class="day-theme">人間らしさを回復した者として</div>
+    <div class="day-content">信仰生活とは、本来の人間らしさを取り戻して生きることです。自分だけが幸せになろうとするのではなく、喜びを分かち合い、悲しみを共に負う。それが神のかたちの回復です。今週、誰かの痛みに寄り添いましたか？喜びを分かち合いましたか？</div>
+    <div class="day-verse">ローマ 12:15 —「喜ぶ者といっしょに喜び」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'sat')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'sat')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-sat"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">礼拝準備</div>
+    <div class="day-theme">今週を振り返りながら</div>
+    <div class="day-content">今週、神のかたちが少し回復されましたか？誰かの立場を理解し、共感できた瞬間がありましたか？神の恵みの中に生かされていることへの感謝を携えて、今日の礼拝に臨んでください。</div>
+    <div class="day-verse">詩篇 100:4 —「感謝しながら、その門に入れ」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'sun')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'sun')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-sun"></div>
+  </div>
+
+</div>
+
+<!-- グループ分かち合い -->
+<div class="panel" id="sharing">
+
+  <div class="question-intro">
+    <div class="question-intro-top">分かち合いの中心テーマ</div>
+    <div class="question-intro-text">
+      神のかたちを失った人間は<br>
+      本来の姿を忘れてしまいました。<br>
+      私たちはどこまで人間らしさを取り戻しているでしょうか？
+    </div>
+  </div>
+
+  <div class="question-card red">
+    <div class="q-number">1</div>
+    <div class="q-text">今の社会の混乱（家族崩壊、格差、暴力など）を見て、あなたはどう感じますか？聖書の「引き渡された」という言葉は、その現実をどのように説明しますか？</div>
+    <div class="q-guide">分かち合いの方向 → 「もともとそういうもの」という諦めから、「神の恵みが断たれた異常な状態」という診断へ。正確な診断が回復への第一歩です。</div>
+  </div>
+
+  <div class="question-card red">
+    <div class="q-number">2</div>
+    <div class="q-text">説教の電気の例えを思い出してください。あなたの人生で、神の恵みが「通っている」と感じる領域と、「通っていない」と感じる領域はどこですか？</div>
+    <div class="q-guide">分かち合いの方向 → 正直に点検する機会として。裁き合うのではなく、それぞれが神の恵みを必要としていることを確認し合いましょう。</div>
+  </div>
+
+  <div class="question-card gold">
+    <div class="q-number">3</div>
+    <div class="q-text">「共感する力」が神のかたちとして造られた人間の本来の姿だとすれば、あなたの生活の中でそれが最も発揮されているのはいつですか？また、失われているのはいつですか？</div>
+    <div class="q-guide">分かち合いの方向 → 具体的な経験を分かち合うことで、人間らしさの回復が何を意味するかを実感できるように。説教者が語った父親の話なども参考に。</div>
+  </div>
+
+  <div class="question-card gold">
+    <div class="q-number">4</div>
+    <div class="q-text">今この時間が「悔い改めのための猶予期間」だとすれば、あなたはこの時間をどのように使いたいですか？また、まだ神を知らない周りの人に、この事実をどのように伝えますか？</div>
+    <div class="q-guide">分かち合いの方向 → 具体的な行動へ。名前を挙げて祈ることから始めましょう。</div>
+  </div>
+
+  <div class="q-prayer">
+    <div class="q-prayer-label">ともに祈って終わりましょう</div>
+    <div class="q-prayer-text">
+      神のかたちに造られながらも<br>
+      その姿を失ってしまった私たちを<br>
+      イエス・キリストによって回復してくださる神に感謝し<br>
+      人間らしさを取り戻した者として<br>
+      この一週間を歩めるよう、ともに祈ります。
+    </div>
+  </div>
+
+</div>
+
+<div id="nowPlaying" class="now-playing">🔊 再生中...</div>
+
+<!-- ホーム画面追加バナー -->
+<div id="installBanner" style="display:none; margin:0 16px 16px; padding:16px 18px; background:var(--dark2); border:1px solid var(--gold); border-radius:12px; position:relative;">
+  <div style="font-size:14px; letter-spacing:2px; color:var(--gold); margin-bottom:8px;">📱 ホーム画面に追加</div>
+  <div id="installMsg" style="font-size:18px; color:#fff; line-height:1.8;"></div>
+  <button onclick="document.getElementById('installBanner').style.display='none'" style="position:absolute; top:12px; right:14px; background:none; border:none; color:var(--gold); font-size:20px; cursor:pointer;">✕</button>
+</div>
+
+<div class="footer">ローマ人への手紙 1:24–32 · 失われた人間らしさ</div>
+
+<script>
+// ===== 聖句データ (新改訳聖書) =====
+const verseData = {
+  point1: [
+    { ref: 'ローマ 1:24', text: 'それゆえ、神は彼らを、その心の欲望のままに、汚れに引き渡されました。そのため、彼らは互いにそのからだを辱めるようになりました。' },
+    { ref: 'ローマ 1:26', text: 'それゆえ、神は彼らを恥ずべき情欲に引き渡されました。女たちも、自然な関係を自然に反したものに変え、' },
+    { ref: 'ローマ 1:28', text: 'そのうえ、彼らは神を知ることに価値を認めなかったので、神は彼らを堕落した思いに引き渡され、彼らはしてはならないことを行うようになりました。' }
+  ],
+  point2: [
+    { ref: 'ローマ 1:29–31', text: '彼らはあらゆる不義、悪、貪欲、悪意で満ちており、妬み、殺意、争い、欺き、悪だくみにあふれ、陰口を言い、人を中傷し、神を憎み、人を侮り、高ぶり、大言壮語し、悪を企て、親に反抗し、無分別で、不誠実で、情け知らずで、無慈悲です。' }
+  ],
+  point3: [
+    { ref: 'ローマ 12:15', text: '喜ぶ者といっしょに喜び、泣く者といっしょに泣きなさい。' },
+    { ref: '創世記 1:27', text: '神は人をご自身のかたちとして創造された。神のかたちとして人を創造し、男と女に彼らを創造された。' }
+  ],
+  point5: [
+    { ref: 'ローマ 2:4–5', text: 'それとも、神の慈愛があなたを悔い改めに導くことも知らないで、その豊かな慈愛と忍耐と寛容を軽んじているのですか。あなたは、かたくなで悔い改めない心によって、神の義のさばきが現れる怒りの日のために、自分への怒りを積み上げているのです。' },
+    { ref: 'ルカ 17:27', text: 'ノアが箱舟に入るその日まで、人々は食べたり、飲んだり、めとったり、とついだりしていた。そして洪水が来て、彼らをことごとく滅ぼした。' }
+  ],
+  close: [
+    { ref: 'マタイ 7:26', text: 'また、わたしのこれらのことばを聞いて、行わない者はみな、砂の上に自分の家を建てた愚かな人に比べることができます。' },
+    { ref: 'ローマ 12:15', text: '喜ぶ者といっしょに喜び、泣く者といっしょに泣きなさい。' }
+  ],
+  mon: [
+    { ref: 'ローマ 1:24', text: 'それゆえ、神は彼らを、その心の欲望のままに、汚れに引き渡されました。' }
+  ],
+  tue: [
+    { ref: 'ローマ 1:28', text: '神は彼らを堕落した思いに引き渡され、彼らはしてはならないことを行うようになりました。' }
+  ],
+  wed: [
+    { ref: 'ローマ 12:15', text: '喜ぶ者といっしょに喜び、泣く者といっしょに泣きなさい。' }
+  ],
+  thu: [
+    { ref: 'ローマ 2:4', text: '神の慈愛があなたを悔い改めに導くことも知らないで、その豊かな慈愛と忍耐と寛容を軽んじているのですか。' }
+  ],
+  fri: [
+    { ref: 'マタイ 7:26', text: 'わたしのこれらのことばを聞いて、行わない者はみな、砂の上に自分の家を建てた愚かな人に比べることができます。' }
+  ],
+  sat: [
+    { ref: 'ローマ 12:15', text: '喜ぶ者といっしょに喜び、泣く者といっしょに泣きなさい。' }
+  ],
+  sun: [
+    { ref: '詩篇 100:4', text: '感謝しながら、その門に入れ。賛美しながら、その大庭に入れ。感謝して、御名をほめよ。' }
+  ]
+};
+
+// ===== TTS テキスト =====
+const ttsTexts = {
+  intro: `今日の説教の背景にある問いはこれです。なぜ世界はこんなに混乱しているのでしょうか。なぜ人間は人間らしくなれないのでしょうか。聖書はその答えをローマ書1章に明確に示しています。世界の混乱は「もともとそういうもの」ではありません。神の恵みが断たれたときに起きる、異常な状態なのです。`,
+  point1: `ローマ書1章24節、26節、28節に繰り返し出てくる言葉があります。「引き渡された」という言葉です。神のさばきとは、神が人間に悪いものを加えることではありません。良いものの供給が止まることで、人間が壊れていく。これが聖書の説明です。電気を考えてみてください。電気が消えた電球は、形は残っていますが光ることができません。神の恵みが断たれた人間も同じです。形は残っていますが、本来の機能を失ってしまいます。地震や洪水のような自然災害も、この一般恩寵が断たれるときに起きる現象です。`,
+  point2: `ローマ書1章26節、27節の箇所は、同性間の問題について述べています。しかしこれは、その問題だけを指摘しているのではありません。神の秩序が壊れるとき、美しいものが醜くなるという非人間化の現象を、最も象徴的に示すために挙げられた例です。続く29節から31節には、21の罪が列挙されています。不義、悪意、ねたみ、殺意、欺き、陰口、傲慢、親への反抗、無慈悲。これらはすべて、神の恵みが断たれた状態で起きる混乱と崩壊です。神を知らない人々は、これを「もともとの状態」と誤解しているため、人間の本来の姿への渇望も希望もありません。`,
+  point3: `サイコパスという人格障害があります。自分の感情や痛みには非常に敏感ですが、他者に共感することができないため、誰とも情緒的なつながりを持てません。人を傷つけても、まったく罪悪感を感じない。なぜなら、その人の痛みを感じることができないからです。この「共感する力」こそ、神のかたちとして造られた人間の本来の姿です。神は自らの栄光を分かち合うために人間を造られました。だから人間には本来、喜びも悲しみも共に分かち合いたいという本能があります。ローマ書12章15節は言います。喜ぶ者といっしょに喜び、泣く者といっしょに泣きなさい。人間らしさとは、他者の喜びと悲しみをともに感じることができる人格です。`,
+  point4: `国際援助団体オックスファムの報告によれば、世界の富の50パーセント以上を上位1パーセントが所有していると言います。もし富める者が自発的に分かち合えば、この世界は大きく変わるはずです。しかしそれができない。なぜなら、他者の痛みに共感する力が失われているからです。政治的な強制による再分配ではなく、共感から生まれる自発的な分かち合いこそが、人間らしさの本来の姿です。喜びを分かち合えば倍になり、悲しみを分かち合えば半分になる。それが神のかたちとして造られた人間の本来の姿です。`,
+  point5: `なぜ神のさばきはすぐに執行されないのでしょうか。ノアの時代を思い出してください。人々は食べ、飲み、結婚し、ごく普通の生活を送っていました。しかし洪水は来ました。ロトの時代も同じです。人々は家を建て、商売をし、普通に生きていました。しかし火は来ました。今この時間、さばきが延期されているのは、神の憐れみによるものです。ローマ書2章4節は言います。神の慈愛があなたを悔い改めに導く、と。しかし悔い改めないなら、その時間はただ怒りを積み重ねているだけです。世俗の成功も幸福も、さばきの前には砂の上の家にすぎません。`,
+  close: `信仰生活とは何でしょうか。聖書によって自分の本来の姿を正しく知り、人間らしさを取り戻して生きることです。人間は神の栄光を現すために神のかたちに造られました。罪によってそのかたちを失い、イエス・キリストの十字架によって回復の根拠が備えられました。これを救いと言います。今この世界に現れているあらゆる非人間化の現象は、本来のものではありません。神の恵みが断たれたゆえの、異常な状態です。私たちが聖書を通して学ぶべきことは、本来の人間の姿とは何か、そしてどのようにそれを取り戻すかです。`,
+  mon: `月曜日の黙想です。今日の日常の良いことは、自然に起きているのではありません。すべて神の一般恩寵として支えられています。空気、水、健康、平和。どれも当たり前ではありません。電気が消えた電球のように、神の恵みが断たれれば人間の本来の機能は失われます。今日の一日を、神の恵みの中に生かされていることへの感謝から始めてください。`,
+  tue: `火曜日の黙想です。ニュースで見る道徳の崩壊、家族の破綻、社会の混乱。これらは「もともとそういうもの」ではありません。神の秩序が壊れたときに現れる、非正常な状態です。聖書の目で世界を見るとき、診断が変わります。問題の根は神から離れたことにあります。正確な診断だけが、正しい処方へと導きます。`,
+  wed: `水曜日の黙想です。今日、誰かの立場に立って考えてみましたか。共感する力は、神のかたちとして造られた人間の本来の姿です。サイコパスが他者の痛みを感じられないように、この力が失われることが非人間化の本質です。ローマ書12章15節を今日一日、心に携えてください。泣く者といっしょに泣きなさい。今日、身近な人の気持ちに寄り添う一歩を踏み出してください。`,
+  thu: `木曜日の黙想です。神のさばきがすぐに来ない理由があります。神の憐れみが悔い改めへと導くための時間です。世俗の成功、幸せな生活、それ自体は罪ではありません。しかし神から離れたままのすべての活動は、終わりのさばきに向けて怒りを積み重ねているにすぎません。この時間を正しく使っているか、今日静かに問い直してください。`,
+  fri: `金曜日の黙想です。伝道者の書は「日の下のすべては空」と言います。神から離れた人間の宗教も、政治も、学問も、文明も、どんなに素晴らしく見えても、さばきの前には砂の上の家にすぎません。マタイ7章26節のことばを覚えてください。砂の上に家を建てた愚かな人。あなたの人生の土台は、岩の上に置かれていますか？`,
+  sat: `土曜日の黙想です。信仰生活とは、本来の人間らしさを取り戻して生きることです。自分だけが幸せになろうとするのではなく、喜びを分かち合い、悲しみを共に負う。それが神のかたちの回復です。今週、誰かの痛みに寄り添いましたか。喜びを分かち合いましたか。人間らしさが少し回復された一週間でしたか。`,
+  sun: `礼拝準備の黙想です。今週を振り返ってみてください。神のかたちが少し回復されましたか。誰かの立場を理解し、共感できた瞬間がありましたか。神の恵みの中に生かされていることへの感謝を携えて、今日の礼拝に臨んでください。詩篇100篇4節は言います。感謝しながら、その門に入れ。`
+};
+
+// ===== 聖句確認トグル =====
+function toggleVerse(btn, key) {
+  const box = document.getElementById('vb-' + key);
+  const isOpen = box.classList.contains('open');
+
+  document.querySelectorAll('.verse-box.open').forEach(b => {
+    b.classList.remove('open');
+    b.innerHTML = '';
+  });
+  document.querySelectorAll('.verse-btn.open').forEach(b => {
+    b.classList.remove('open');
+    b.innerHTML = '<span class="icon">📖</span> 聖句を確認';
+  });
+
+  if (!isOpen) {
+    const verses = verseData[key];
+    if (!verses) return;
+    let html = '';
+    verses.forEach(v => {
+      html += '<div class="verse-item">';
+      html += '<div class="verse-item-ref">' + v.ref + '</div>';
+      html += '<div class="verse-item-text">' + v.text + '</div>';
+      html += '</div>';
+    });
+    box.innerHTML = html;
+    box.classList.add('open');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="icon">📖</span> 閉じる';
+  }
+}
+
+// ===== タブ切り替え =====
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  stopAudio();
+  document.querySelectorAll('.verse-box.open').forEach(b => { b.classList.remove('open'); b.innerHTML = ''; });
+  document.querySelectorAll('.verse-btn.open').forEach(b => { b.classList.remove('open'); b.innerHTML = '<span class="icon">📖</span> 聖句を確認'; });
+}
+
+// ===== MP3再生 / TTSフォールバック =====
+let _audio = null;
+
+function stopAudio() {
+  if (_audio) { _audio.pause(); _audio.currentTime = 0; _audio = null; }
+  window.speechSynthesis && window.speechSynthesis.cancel();
+}
+
+function speak(btn, key) {
+  if (btn.classList.contains('playing')) {
+    stopAudio();
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span class="icon">🔊</span> 聴く';
+    return;
+  }
+  document.querySelectorAll('.tts-btn.playing').forEach(b => {
+    b.classList.remove('playing');
+    b.innerHTML = '<span class="icon">🔊</span> 聴く';
+  });
+  stopAudio();
+
+  function speakTTS(b, k) {
+    const text = ttsTexts[k];
+    if (!text || !window.speechSynthesis) return;
+    const sentences = text.match(/[^。！？]+[。！？]*/g) || [text];
+    let i = 0;
+    b.classList.add('playing');
+    b.innerHTML = '<span class="icon">⏹</span> 止める';
+    function next() {
+      if (i >= sentences.length || !b.classList.contains('playing')) {
+        b.classList.remove('playing');
+        b.innerHTML = '<span class="icon">🔊</span> 聴く';
+        return;
+      }
+      const u = new SpeechSynthesisUtterance(sentences[i++].trim());
+      u.lang = 'ja-JP'; u.rate = 0.92;
+      u.onend = next;
+      window.speechSynthesis.speak(u);
+    }
+    next();
+  }
+
+  const isLocal = location.protocol === 'file:';
+
+  if (!isLocal) {
+    let fell = false;
+    function fallback() { if (fell) return; fell = true; _audio = null; speakTTS(btn, key); }
+    _audio = new Audio('audio/' + key + '.mp3');
+    btn.classList.add('playing');
+    btn.innerHTML = '<span class="icon">⏹</span> 止める';
+    _audio.onended = () => { btn.classList.remove('playing'); btn.innerHTML = '<span class="icon">🔊</span> 聴く'; _audio = null; };
+    _audio.onerror = fallback;
+    _audio.play().catch(fallback);
+  } else {
+    speakTTS(btn, key);
+  }
+}
+
+window.speechSynthesis && (window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); });
+
+// ===== ホーム画面追加案内 =====
+(function() {
+  const banner = document.getElementById('installBanner');
+  const msg = document.getElementById('installMsg');
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isAndroid = /android/i.test(navigator.userAgent);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+
+  if (isStandalone) return; // すでにインストール済み
+
+  if (isIOS) {
+    msg.innerHTML = '① 画面下の <strong style="color:var(--gold)">共有ボタン</strong>（□↑）をタップ<br>② 「<strong style="color:var(--gold)">ホーム画面に追加</strong>」を選択';
+    banner.style.display = 'block';
+  } else if (isAndroid) {
+    msg.innerHTML = '① ブラウザ右上の <strong style="color:var(--gold)">メニュー（⋮）</strong> をタップ<br>② 「<strong style="color:var(--gold)">ホーム画面に追加</strong>」を選択';
+    banner.style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>
