@@ -147,11 +147,17 @@ body {
   margin-top: 14px; line-height: 1.9;
   border-left: 5px solid #C9A84C;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  width: 100%;
 }
 .tip-box.red {
   background: #FFF0F0;
   border-left-color: #8B1A1A;
   color: #333;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 /* 다음번 안내 */
@@ -353,7 +359,7 @@ body {
     </div>
 
     <div class="tip-box red">
-      <strong style="color:#8B1A1A; font-size:21px;">⚠ 「インストール」ではなく「ショートカット」を選んでください。</strong><br>
+      <strong style="color:#8B1A1A; font-size:19px;">⚠ 「インストール」ではなく<br>「ショートカット」を選んでください。</strong><br>
       「インストール」を選ぶと音声再生に問題が起きる場合があります。
     </div>
 
