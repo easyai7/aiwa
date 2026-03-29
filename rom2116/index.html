@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>礼拝の復習 | 福音が必要な理由</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="愛和メッセージ">
+<meta name="theme-color" content="#C9A84C">
+
+<!-- OG -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="福音が必要な理由 — ローマ書 2:6–11">
+<meta property="og:description" content="なぜイエス・キリストの福音が必要なのか。自分の罪の深さを正しく理解するところから始まります。">
+<meta property="og:image" content="https://easyai7.github.io/aiwa/s04/og-image.png">
+<meta property="og:url" content="https://easyai7.github.io/aiwa/s04/">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --dark: #1A1410;
+    --dark2: #2C2418;
+    --parchment: #F7F3EC;
+    --parchment2: #EDE6D8;
+    --text: #3D2E1E;
+    --text-light: #7A6A58;
+    --accent: #8B1A1A;
+    --red-dark: #5C1010;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--parchment); color: var(--text); min-height: 100vh; font-size: 20px; }
+
+  .header { background: var(--dark); padding: 28px 24px 24px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px); }
+  .header-label { font-size: 16px; font-weight: 300; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .header-title { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 6px; }
+  .header-ref { font-size: 20px; color: var(--gold-light); font-weight: 300; letter-spacing: 1px; }
+  .gold-bar { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-top: 20px; }
+
+  .tension-box { margin: 20px 16px 0; background: var(--red-dark); border-radius: 12px 12px 0 0; padding: 22px; position: relative; overflow: hidden; }
+  .tension-box::before { content: '!'; font-size: 160px; color: rgba(255,255,255,0.04); position: absolute; right: 16px; top: -20px; line-height: 1; }
+  .tension-label { font-size: 14px; letter-spacing: 3px; color: #ffaaaa; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+  .tension-text { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.7; }
+  .tension-sub { margin-top: 12px; font-size: 18px; color: rgba(255,200,200,0.85); line-height: 1.9; font-weight: 300; }
+
+  .grace-box { margin: 0 16px 20px; background: var(--dark2); border-radius: 0 0 12px 12px; padding: 22px; border-top: 2px solid var(--gold); }
+  .grace-label { font-size: 14px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+  .grace-text { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.7; }
+  .grace-sub { margin-top: 12px; font-size: 18px; color: var(--gold-light); line-height: 1.9; font-weight: 300; }
+
+  .tabs { display: flex; margin: 0 16px; gap: 4px; }
+  .tab { flex: 1; padding: 12px 4px; font-size: 18px; font-weight: 500; text-align: center; background: var(--parchment2); color: var(--text-light); border: none; border-radius: 8px 8px 0 0; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif; }
+  .tab.active { background: var(--dark); color: var(--gold); }
+
+  .panel { margin: 0 16px 24px; background: #fff; border-radius: 0 0 12px 12px; padding: 22px; display: none; border: 1px solid var(--parchment2); border-top: none; }
+  .panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+  .misread-box { background: #fff5f5; border: 1px solid #ffcccc; border-radius: 10px; padding: 18px; margin-bottom: 24px; }
+  .misread-label { font-size: 16px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+  .misread-text { font-size: 20px; color: var(--text); line-height: 1.9; }
+
+  .note-point { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px dashed var(--parchment2); }
+  .note-point:last-child { border-bottom: none; margin-bottom: 0; }
+  .note-tag { display: inline-block; background: var(--dark); color: var(--gold); font-size: 15px; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; margin-bottom: 10px; font-weight: 500; }
+  .note-tag.red { background: var(--red-dark); color: #ffaaaa; }
+  .note-text { font-size: 20px; color: var(--text); line-height: 1.9; }
+  .note-verse-ref { margin-top: 8px; font-size: 18px; color: var(--accent); font-style: italic; }
+
+  .btn-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .tts-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--dark); color: var(--gold); border: none; border-radius: 20px; padding: 8px 16px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif; }
+  .tts-btn:hover { background: #2e1f12; }
+  .tts-btn.playing { background: var(--accent); color: #fff; }
+  .verse-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; border: none; border-radius: 20px; padding: 8px 16px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif; }
+  .verse-btn:hover { background: #a02020; }
+  .verse-btn.open { background: var(--dark2); color: var(--gold-light); }
+
+  .verse-box { display: none; margin-top: 12px; background: #fefcf7; border: 1px solid var(--gold-light); border-left: 4px solid var(--gold); border-radius: 8px; padding: 16px 18px; animation: slideDown 0.3s ease; }
+  .verse-box.open { display: block; }
+  .verse-item { margin-bottom: 14px; }
+  .verse-item:last-child { margin-bottom: 0; }
+  .verse-item-ref { font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+  .verse-item-text { font-family: 'Noto Serif JP', serif; font-size: 18px; color: var(--text); line-height: 1.9; }
+
+  @keyframes slideDown { from { opacity: 0; max-height: 0; transform: translateY(-8px); } to { opacity: 1; max-height: 2000px; transform: translateY(0); } }
+
+  .day-card { margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 16px; }
+  .day-card.red { border-left-color: var(--accent); }
+  .day-label { font-size: 16px; letter-spacing: 2px; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .day-card.red .day-label { color: var(--accent); }
+  .day-theme { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .day-content { font-size: 20px; color: var(--text-light); line-height: 1.9; }
+  .day-verse { margin-top: 8px; font-size: 18px; color: var(--accent); font-style: italic; }
+
+  .question-intro { background: var(--dark); border-radius: 10px; padding: 20px; margin-bottom: 22px; text-align: center; }
+  .question-intro-top { font-size: 15px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+  .question-intro-text { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 600; color: #fff; line-height: 1.8; }
+
+  .question-card { margin-bottom: 18px; background: var(--parchment); border-radius: 10px; padding: 18px; border: 1px solid var(--parchment2); }
+  .question-card.red { border-left: 4px solid var(--accent); }
+  .question-card.gold { border-left: 4px solid var(--gold); }
+  .q-number { display: inline-block; width: 30px; height: 30px; background: var(--dark); color: var(--gold); font-size: 15px; font-weight: 700; border-radius: 50%; text-align: center; line-height: 30px; margin-bottom: 10px; }
+  .q-text { font-family: 'Noto Serif JP', serif; font-size: 21px; font-weight: 600; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+  .q-guide { font-size: 18px; color: var(--text-light); line-height: 1.8; padding-left: 14px; border-left: 2px solid var(--gold-light); }
+
+  .q-prayer { margin-top: 22px; background: var(--dark); border-radius: 10px; padding: 18px; text-align: center; }
+  .q-prayer-label { font-size: 15px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .q-prayer-text { font-size: 20px; color: #fff; line-height: 1.9; font-weight: 300; }
+
+  .now-playing { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--dark); color: var(--gold); padding: 10px 22px; border-radius: 30px; font-size: 16px; font-weight: 500; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 100; white-space: nowrap; }
+  .now-playing.show { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px) translateX(-50%); } to { opacity: 1; transform: translateY(0) translateX(-50%); } }
+  .footer { text-align: center; padding: 18px; font-size: 16px; color: var(--text-light); letter-spacing: 1px; margin-bottom: 60px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">礼拝の復習</div>
+  <div class="header-title">福音が必要な理由</div>
+  <div class="header-ref">ローマ人への手紙 2:6–11</div>
+  <div class="gold-bar"></div>
+</div>
+
+<div class="tension-box">
+  <div class="tension-label">まず直視すべき現実</div>
+  <div class="tension-text">福音が喜びになるためには<br>まず自分が死刑囚だと<br>知らなければならない</div>
+  <div class="tension-sub">
+    救われた事実に安心するだけでは不十分。<br>
+    自分がどれほど罪深い存在だったかを知るとき、<br>
+    初めて福音は本当の喜びになる。
+  </div>
+</div>
+<div class="grace-box">
+  <div class="grace-label">しかし — 聖書が宣言する福音</div>
+  <div class="grace-text">多く赦された者は<br>多く愛する</div>
+  <div class="grace-sub">
+    「赦されることの少ない者は、愛することも少ない」（ルカ 7:47）<br>
+    <strong style="color:var(--gold)">罪の深さを知る者だけが、福音の深さを知る。</strong>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('notes', this)">説教の核心</button>
+  <button class="tab" onclick="showTab('weekly', this)">週の黙想</button>
+  <button class="tab" onclick="showTab('sharing', this)">グループ分かち合い</button>
+</div>
+
+<!-- 説教の核心 -->
+<div class="panel active" id="notes">
+
+  <div class="misread-box">
+    <div class="misread-label">⚠ 福音が「よい知らせ」になる条件</div>
+    <div class="misread-text">
+      よい知らせには二種類ある。良いものを手に入れたときと、致命的な問題が解決されたとき。
+      死刑囚にとって釈放以上の喜びはない。すべての人間は神のさばきの下にある死刑囚。
+      福音とはその問題への解決策だから、最高の喜びの知らせになる。
+    </div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'intro')"><span class="icon">🔊</span> 聴く</button>
+    </div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag red">500デナリオンと50デナリオン</div>
+    <div class="note-text">ルカ 7:41–47の女性の話。彼女は人前で罪人として知られていた。しかしイエスの足を涙で濡らし、髪で拭い、口づけし、香油を注いだ。一方、招いたシモンは足を洗う水さえ出さなかった。多く赦された者が多く愛する。罪の深さへの理解が、愛の深さを決める。</div>
+    <div class="note-verse-ref">ルカ 7:41–47</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point1')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point1')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point1"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag red">神の前での罪 — 善とは何か</div>
+    <div class="note-text">ローマ 2:7の「善」とは、神の栄光と誉れを求めることを意味する。つまり礼拝する人生。食べるにも飲むにも、すべて神の栄光のために行うことが求められる（1コリント 10:31）。人生の目的を神の栄光においていない行為はすべて、神への反逆になる。これを「罪」だと誰も深刻に考えない。</div>
+    <div class="note-verse-ref">ローマ 2:7 / 1コリント 10:31 / ローマ 12:1</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point2')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point2')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point2"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">永遠ではなく滅びるものに価値を置く罪</div>
+    <div class="note-text">「썩지 아니함을 구하는 것」— 朽ちないものを求めること。宝を天に積むとはこの意味。しかし人は地上に価値を積もうとする。財産、名声、成功、快楽。予수를 믿는다면서도 イエスを自分の利益のために利用しようとする人さえいる。これらがすべて神の怒りを引き起こすことを誰も深刻に考えない。</div>
+    <div class="note-verse-ref">マタイ 6:19 / ローマ 2:8</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point3')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point3')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point3"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">徒党を組んで罪の責任を薄める</div>
+    <div class="note-text">ローマ 2:8の「党を組む」とは、良心の呵責を薄めるために共犯者を集めること。赤信号でも皆が渡れば怖くない。ハワが先に罪を犯してアダムを引き込んだように。バベルの塔もこの心理。皆が同じことをしているから大丈夫、という集団的な罪の正当化。</div>
+    <div class="note-verse-ref">ローマ 2:8 / 創世記 3:6</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'point4')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'point4')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point4"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">結論 — 十字架をどれほど必要としているか</div>
+    <div class="note-text">ローマ 3:10–12「義人はいない。一人もいない」。これが聖書の公訴状。自分の罪の深刻さに眠れなくなったことがあるか。ローマ 7:24「ああ、私は何と惨めな人間なのか」—これはパウロが回心後に書いた告白。この嘆きに共感できるかどうかが、福音の深さを知っているかどうかの分かれ目。</div>
+    <div class="note-verse-ref">ローマ 3:10–12 / ローマ 7:24</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'close')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'close')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-close"></div>
+  </div>
+
+</div>
+
+<!-- 週の黙想 -->
+<div class="panel" id="weekly">
+
+  <div class="day-card red">
+    <div class="day-label">月曜日</div>
+    <div class="day-theme">福音が本当の喜びになっているか</div>
+    <div class="day-content">死刑囚にとって釈放以上の喜びはない。あなたにとって福音はそれほどの喜びですか。救われた事実に安心しているだけですか。今日、自分がどれほどの罪人だったかを静かに振り返ってみてください。</div>
+    <div class="day-verse">ルカ 7:47 —「赦されることの少ない者は、愛することも少ない」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'mon')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'mon')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-mon"></div>
+  </div>
+
+  <div class="day-card red">
+    <div class="day-label">火曜日</div>
+    <div class="day-theme">今日の行動は神の栄光のためか</div>
+    <div class="day-content">食べるにも飲むにも、すべて神の栄光のために。今日一日の行動の動機を点検してください。神の栄光のためですか。自分のためですか。人生の目的を神に置いているか、今日確認しましょう。</div>
+    <div class="day-verse">1コリント 10:31 —「すべて神の栄光のために」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'tue')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'tue')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-tue"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">水曜日</div>
+    <div class="day-theme">宝をどこに積んでいるか</div>
+    <div class="day-content">あなたが最も大切にしているものは何ですか。それは天に積まれていますか、それとも地上に積まれていますか。今日、自分の価値観を正直に点検してください。朽ちるものに心を注いでいないか確認しましょう。</div>
+    <div class="day-verse">マタイ 6:19 —「宝を地上に蓄えるな」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'wed')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'wed')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-wed"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">木曜日</div>
+    <div class="day-theme">周りに流されていないか</div>
+    <div class="day-content">皆がやっているから大丈夫、という思考は罪の正当化です。良心の呵責を薄めるために周りに合わせていないか点検してください。今日、神の前に一人で立ってみましょう。周りではなく、神の目線で自分を見てください。</div>
+    <div class="day-verse">ローマ 2:8 —「党を組んで真理に従わない」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'thu')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'thu')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-thu"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">金曜日</div>
+    <div class="day-theme">律法主義か福音主義か</div>
+    <div class="day-content">信仰生活に自分の功績への誇りがあるなら、それは律法主義のサインかもしれません。自分の信仰に誇りがありますか。それとも自分がどれほど罪深い存在であり、キリストの恵みがどれほど必要かの感覚がありますか。今日、正直に自分を点検してください。</div>
+    <div class="day-verse">ローマ 7:24 —「私は何と惨めな人間なのか」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'fri')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'fri')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-fri"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">土曜日</div>
+    <div class="day-theme">十字架をどれほど必要としているか</div>
+    <div class="day-content">「義人はいない。一人もいない」という聖書の宣言はあなたに当てはまりますか。自分の罪の深刻さを神の前で見つめるとき、十字架がどれほど必要かが見えてきます。今日、十字架の前に静かに座ってみましょう。</div>
+    <div class="day-verse">ローマ 3:10 —「義人はいない。一人もいない」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'sat')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'sat')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-sat"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">礼拝準備</div>
+    <div class="day-theme">今週を振り返りながら</div>
+    <div class="day-content">今週、自分の罪の深さを見つめましたか。十字架の恵みへの感謝が深まりましたか。今日の礼拝は義務ではなく、赦された罪人としての感謝の応答です。その感謝を携えて、今日の礼拝に臨んでください。</div>
+    <div class="day-verse">詩篇 100:4 —「感謝しながら、その門に入れ」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this, 'sun')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this, 'sun')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-sun"></div>
+  </div>
+
+</div>
+
+<!-- グループ分かち合い -->
+<div class="panel" id="sharing">
+
+  <div class="question-intro">
+    <div class="question-intro-top">分かち合いの中心テーマ</div>
+    <div class="question-intro-text">
+      あなたにとって福音はどれほどの喜びですか？<br>
+      自分の罪の深さを知るとき、<br>
+      初めて福音の深さが分かります。
+    </div>
+  </div>
+
+  <div class="question-card red">
+    <div class="q-number">1</div>
+    <div class="q-text">500デナリオンと50デナリオンの例え。あなたは自分がどちらに近いと思いますか？イエスへの愛の深さと、罪の理解の深さはどう関係していますか？</div>
+    <div class="q-guide">分かち合いの方向 → 正直に。自分の信仰生活を振り返りながら、罪の理解と感謝の深さの関係を話し合いましょう。</div>
+  </div>
+
+  <div class="question-card red">
+    <div class="q-number">2</div>
+    <div class="q-text">「食べるにも飲むにも、すべて神の栄光のために」という基準で、今週の自分を振り返るとどうですか？何が神の栄光のためで、何がそうでなかったですか？</div>
+    <div class="q-guide">分かち合いの方向 → 具体的な場面を挙げながら。責め合うのではなく、共に神の前に正直になる機会として。</div>
+  </div>
+
+  <div class="question-card gold">
+    <div class="q-number">3</div>
+    <div class="q-text">「皆がやっているから大丈夫」という思考で罪を正当化した経験はありますか？ハワの例え、バベルの塔の例えから何を学びますか？</div>
+    <div class="q-guide">分かち合いの方向 → 集団的な罪の正当化は現代社会でも至る所にあります。身近な例を挙げながら話し合いましょう。</div>
+  </div>
+
+  <div class="question-card gold">
+    <div class="q-number">4</div>
+    <div class="q-text">ローマ 7:24「ああ、私は何と惨めな人間なのか」という叫びに、あなたはどれほど共感できますか？この叫びを深く感じたことはありますか？</div>
+    <div class="q-guide">分かち合いの方向 → 正直に経験を分かち合いましょう。この叫びへの共感が、十字架への感謝の深さに繋がります。</div>
+  </div>
+
+  <div class="q-prayer">
+    <div class="q-prayer-label">ともに祈って終わりましょう</div>
+    <div class="q-prayer-text">
+      自分がどれほどの罪人であったかを<br>
+      正直に見つめることができるよう<br>
+      聖霊の助けを求め<br>
+      十字架の恵みへの感謝が深まるよう<br>
+      ともに祈ります。
+    </div>
+  </div>
+
+</div>
+
+<div id="nowPlaying" class="now-playing">🔊 再生中...</div>
+<div class="footer">ローマ人への手紙 2:6–11 · 福音が必要な理由</div>
+
+<script>
+const verseData = {
+  point1: [
+    { ref: 'ルカ 7:41–42', text: 'ある金貸しに、借金をしている人が二人いた。一人は500デナリオン、もう一人は50デナリオンの借金があった。二人とも返すことができなかったので、金貸しは両方を赦免してやった。では、どちらが金貸しをより愛するだろうか。' },
+    { ref: 'ルカ 7:47', text: 'だから、この女の多くの罪は赦されている。なぜなら、彼女は多く愛したからだ。しかし赦されることの少ない者は、愛することも少ない。' }
+  ],
+  point2: [
+    { ref: '1コリント 10:31', text: 'だから、あなたがたは食べるにも飲むにも、また何をするにも、すべて神の栄光のためにしなさい。' },
+    { ref: 'ローマ 12:1', text: 'ですから、兄弟たち、私は神のあわれみによって、あなたがたに勧めます。あなたがたのからだを、神に喜ばれる、聖なる生きたささげ物として献げなさい。' }
+  ],
+  point3: [
+    { ref: 'マタイ 6:19', text: '自分のために、地上に宝を蓄えるのをやめなさい。そこでは虫やさびで傷物になり、また盗人が穴を開けて盗みます。' }
+  ],
+  point4: [
+    { ref: 'ローマ 2:8', text: 'しかし、党派心を持ち、真理に従わず、不義に従う者には、怒りとさばきが下ります。' }
+  ],
+  close: [
+    { ref: 'ローマ 3:10–12', text: '「義人はいない。一人もいない。悟りのある人はいない。神を求める人はいない。すべての人が迷い出て、みな等しく無駄な者となった。善を行う人はいない。一人もいない。」' },
+    { ref: 'ローマ 7:24', text: '私は何と惨めな人間なのでしょう。この死のからだから、だれが私を救い出してくれるのでしょうか。' }
+  ],
+  mon: [
+    { ref: 'ルカ 7:47', text: '赦されることの少ない者は、愛することも少ない。' }
+  ],
+  tue: [
+    { ref: '1コリント 10:31', text: 'あなたがたは食べるにも飲むにも、また何をするにも、すべて神の栄光のためにしなさい。' }
+  ],
+  wed: [
+    { ref: 'マタイ 6:19', text: '自分のために、地上に宝を蓄えるのをやめなさい。' }
+  ],
+  thu: [
+    { ref: 'ローマ 2:8', text: '党派心を持ち、真理に従わず、不義に従う者には、怒りとさばきが下ります。' }
+  ],
+  fri: [
+    { ref: 'ローマ 7:24', text: '私は何と惨めな人間なのでしょう。この死のからだから、だれが私を救い出してくれるのでしょうか。' }
+  ],
+  sat: [
+    { ref: 'ローマ 3:10', text: '「義人はいない。一人もいない。」' }
+  ],
+  sun: [
+    { ref: '詩篇 100:4', text: '感謝しながら、その門に入れ。賛美しながら、その大庭に入れ。感謝して、御名をほめよ。' }
+  ]
+};
+
+const ttsTexts = {
+  intro: `今週の説教のテーマは、福音が必要な理由です。福音とは「よい知らせ」という意味ですが、よい知らせになるためには二つの条件があります。一つは、よいものを手に入れたときです。もう一つは、致命的な問題が解決されたときです。どちらがより大きな喜びでしょうか。それは問題の深刻さによって変わります。死刑囚にとっては、釈放以上の喜びはありません。その問題が解決されなければ、他のどんなことも意味がないからです。すべての人間は、神のさばきの下にある死刑囚です。キリストの血によって救われなければ、その運命は永遠の刑罰と死の下に置かれています。福音とはまさにこの問題への解決策だからこそ、最高の喜びの知らせになるのです。`,
+  point1: `ルカによる福音書 七章四十一節から四十七節に、印象的な場面があります。シモンというパリサイ人がイエスを食事に招きました。そこに一人の女性が入ってきて、イエスの足元で悔い改めの涙を流しました。そして自分の髪で涙を拭い、口づけをし、香油を注ぎました。彼女は街で知られた罪人、おそらく娼婦でした。シモンはこれを不快に思いました。自分が尊敬するイエスに、こんな罪人が近づくべきではないと思ったのです。イエスはシモンにたとえ話をされました。五百デナリオンの借金を赦された人と、五十デナリオンを赦された人、どちらが貸主をより愛するか。答えは明らかです。多く赦された者が多く愛します。シモンはこの女性より少ししか赦されていないと感じていた。だから愛も少なかった。自分がどれほどの罪人であったかの理解が、神への愛の深さを決めるのです。`,
+  point2: `ローマ人への手紙 二章七節の「善」とは何でしょうか。それは神の栄光と誉れを求めることです。つまり礼拝する人生を意味します。しかしこれは日曜日の礼拝だけではありません。コリント人への手紙第一 十章三十一節を読んでください。食べるにも飲むにも、また何をするにも、すべて神の栄光のためにしなさい、とあります。食べる、飲むという最も日常的なことさえも、神の栄光のためであるべきだとおっしゃっています。ローマ書十二章一節も言います。あなたがたのからだを生きたささげ物として神に献げなさい。これが霊的な礼拝です。つまり私たちの全人生が礼拝であるべきなのです。この基準からすると、人間がいかに神を無視して自己中心的に生きているかが見えてきます。`,
+  point3: `続いて、朽ちないものを求めるとはどういう意味でしょうか。マタイによる福音書 六章十九節で、イエスは「地上に宝を蓄えるな」とおっしゃいました。宝を天に蓄えなさい、ということは、自分が最も大切にするものを世ではなく永遠の神の国に置きなさい、ということです。しかし人々は地上に価値を積もうとします。財産、名声、成功、快楽。信じると言いながらも、イエスを自分の利益のために利用しようとする人さえいます。これらがすべて神の怒りを引き起こすことを、誰も深刻に考えません。あなたが今最も大切にしているものは何ですか。それは天に積まれていますか。それとも地上に積まれていますか。`,
+  point4: `ローマ人への手紙 二章八節に「党を組む」という言葉があります。これは良心の呵責を薄めるために共犯者を集めることです。日本にこういう言葉があると聞きました。赤信号でも皆で渡れば怖くない、と。人は集団になると、はるかに大胆に罪を犯すことができます。戦争のときの兵士の残虐さがそれをよく表しています。なぜそうなるのでしょうか。共犯者がいると、自分の罪への責任感が分散されて薄まるからです。ハワが先に罪を犯し、アダムを引き込んだのもこの心理です。バベルの塔を建てた場面にも同じ心理が見えます。不信者が毎日罪を犯しながら平然としていられるのも、周りの全員が同じように生きているからです。皆がそうしているから大丈夫、という思考は、罪の正当化にすぎません。`,
+  close: `今日の説教のまとめです。ローマ人への手紙 三章十節から十二節はこう宣言します。義人はいない。一人もいない。悟りのある人はいない。神を求める人もいない。すべての人が迷い出て、善を行う人は一人もいない、と。これが聖書の公訴状です。単一の例外もありません。そして七章二十四節でパウロはこう叫びます。ああ、私は何と惨めな人間なのか。この死のからだから、だれが救い出してくれるのか、と。これはパウロが回心してから書いた告白です。この叫びにどれほど共感できるかが、福音の深さを知っているかどうかの分かれ目です。自分の罪の深刻さに眠れなくなったことがありますか。そのような経験のない方は、まだ自分の罪への理解が浅いかもしれません。聖霊の助けを求め、十字架がどれほど必要かを深く感じる者となってください。`,
+  mon: `月曜日の黙想です。死刑囚にとって釈放以上の喜びはない、という今週の言葉を思い出してください。あなたにとって福音はそれほどの喜びになっていますか。救われた事実に安心しているだけではありませんか。今日、自分がどれほどの罪人だったかを静かに振り返ってみてください。その深さを知るほど、福音の喜びも深まります。`,
+  tue: `火曜日の黙想です。食べるにも飲むにも、すべて神の栄光のために。今日一日の行動の動機を点検してください。神の栄光のためでしょうか。それとも自分のためでしょうか。この問いに正直に向き合う一日にしてください。`,
+  wed: `水曜日の黙想です。あなたが最も大切にしているものは何ですか。それは天に積まれていますか。それとも地上に積まれていますか。今日、自分の価値観を正直に点検してください。朽ちるものに心を注いでいないか確認しましょう。`,
+  thu: `木曜日の黙想です。皆がやっているから大丈夫、という思考で罪を正当化していないでしょうか。良心の呵責を薄めるために周りに合わせていないでしょうか。今日、神の前に一人で立ってみましょう。周りではなく、神の目線で自分を見てください。`,
+  fri: `金曜日の黙想です。信仰生活に自分の功績への誇りがあるなら、それは律法主義のサインかもしれません。自分の信仰に誇りがありますか。それとも自分がどれほど罪深い存在であり、キリストの恵みがどれほど必要かの感覚がありますか。今日、正直に自分を点検してください。`,
+  sat: `土曜日の黙想です。義人はいない。一人もいない。この聖書の宣言はあなたにも当てはまります。自分の罪の深刻さを神の前で見つめるとき、十字架がどれほど必要かが見えてきます。今日、十字架の前に静かに座ってみましょう。そして感謝が生まれるなら、その感謝を言葉にしてみてください。`,
+  sun: `礼拝準備の黙想です。今週、自分の罪の深さを見つめましたか。十字架の恵みへの感謝が深まりましたか。今日の礼拝は義務ではなく、赦された罪人としての感謝の応答です。その感謝を携えて、今日の礼拝に臨んでください。詩篇 百篇の四節は言います。感謝しながら、その門に入れ。`
+};
+
+function toggleVerse(btn, key) {
+  const box = document.getElementById('vb-' + key);
+  const isOpen = box.classList.contains('open');
+  document.querySelectorAll('.verse-box.open').forEach(b => { b.classList.remove('open'); b.innerHTML = ''; });
+  document.querySelectorAll('.verse-btn.open').forEach(b => { b.classList.remove('open'); b.innerHTML = '<span class="icon">📖</span> 聖句を確認'; });
+  if (!isOpen) {
+    const verses = verseData[key];
+    if (!verses) return;
+    let html = '';
+    verses.forEach(v => { html += '<div class="verse-item"><div class="verse-item-ref">' + v.ref + '</div><div class="verse-item-text">' + v.text + '</div></div>'; });
+    box.innerHTML = html;
+    box.classList.add('open');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="icon">📖</span> 閉じる';
+  }
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  stopAudio();
+  document.querySelectorAll('.verse-box.open').forEach(b => { b.classList.remove('open'); b.innerHTML = ''; });
+  document.querySelectorAll('.verse-btn.open').forEach(b => { b.classList.remove('open'); b.innerHTML = '<span class="icon">📖</span> 聖句を確認'; });
+}
+
+let _audio = null;
+function stopAudio() {
+  if (_audio) { _audio.pause(); _audio.currentTime = 0; _audio = null; }
+  window.speechSynthesis && window.speechSynthesis.cancel();
+}
+
+function speak(btn, key) {
+  if (btn.classList.contains('playing')) {
+    stopAudio();
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span class="icon">🔊</span> 聴く';
+    return;
+  }
+  document.querySelectorAll('.tts-btn.playing').forEach(b => { b.classList.remove('playing'); b.innerHTML = '<span class="icon">🔊</span> 聴く'; });
+  stopAudio();
+
+  function speakTTS(b, k) {
+    const text = ttsTexts[k];
+    if (!text || !window.speechSynthesis) return;
+    const sentences = text.match(/[^。！？]+[。！？]*/g) || [text];
+    let i = 0;
+    b.classList.add('playing');
+    b.innerHTML = '<span class="icon">⏹</span> 止める';
+    function next() {
+      if (i >= sentences.length || !b.classList.contains('playing')) {
+        b.classList.remove('playing');
+        b.innerHTML = '<span class="icon">🔊</span> 聴く';
+        return;
+      }
+      const u = new SpeechSynthesisUtterance(sentences[i++].trim());
+      u.lang = 'ja-JP'; u.rate = 0.92;
+      u.onend = next;
+      window.speechSynthesis.speak(u);
+    }
+    next();
+  }
+
+  const isLocal = location.protocol === 'file:';
+  if (!isLocal) {
+    let fell = false;
+    function fallback() { if (fell) return; fell = true; _audio = null; speakTTS(btn, key); }
+    _audio = new Audio('audio/' + key + '.mp3');
+    btn.classList.add('playing');
+    btn.innerHTML = '<span class="icon">⏹</span> 止める';
+    _audio.onended = () => { btn.classList.remove('playing'); btn.innerHTML = '<span class="icon">🔊</span> 聴く'; _audio = null; };
+    _audio.onerror = fallback;
+    _audio.play().catch(fallback);
+  } else {
+    speakTTS(btn, key);
+  }
+}
+
+window.speechSynthesis && (window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); });
+</script>
+</body>
+</html>
