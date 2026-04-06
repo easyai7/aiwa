@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>礼拝の復習 | さばきの理由</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="愛和メッセージ">
+<meta name="theme-color" content="#C9A84C">
+
+<!-- OG -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="さばきの理由 — ローマ書 2:12–16">
+<meta property="og:description" content="律法を知らない人はどうさばかれるのか。良心と律法、そして神の怒りの意味を学びます。">
+<meta property="og:image" content="https://easyai7.github.io/aiwa/s05/og-image.png">
+<meta property="og:url" content="https://easyai7.github.io/aiwa/s05/">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+  :root { --gold:#C9A84C; --gold-light:#E8D5A3; --dark:#1A1410; --dark2:#2C2418; --parchment:#F7F3EC; --parchment2:#EDE6D8; --text:#3D2E1E; --text-light:#7A6A58; --accent:#8B1A1A; --red-dark:#5C1010; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--parchment); color:var(--text); min-height:100vh; font-size:20px; }
+  .header { background:var(--dark); padding:28px 24px 24px; text-align:center; position:relative; overflow:hidden; }
+  .header::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(201,168,76,0.04) 20px,rgba(201,168,76,0.04) 21px); }
+  .header-label { font-size:16px; font-weight:300; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .header-title { font-family:'Noto Serif JP',serif; font-size:26px; font-weight:700; color:#fff; line-height:1.4; margin-bottom:6px; }
+  .header-ref { font-size:20px; color:var(--gold-light); font-weight:300; letter-spacing:1px; }
+  .gold-bar { height:3px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin-top:20px; }
+  .tension-box { margin:20px 16px 0; background:var(--red-dark); border-radius:12px 12px 0 0; padding:22px; position:relative; overflow:hidden; }
+  .tension-box::before { content:'?'; font-size:160px; color:rgba(255,255,255,0.04); position:absolute; right:16px; top:-20px; line-height:1; }
+  .tension-label { font-size:14px; letter-spacing:3px; color:#ffaaaa; text-transform:uppercase; margin-bottom:10px; font-weight:500; }
+  .tension-text { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:#fff; line-height:1.7; }
+  .tension-sub { margin-top:12px; font-size:18px; color:rgba(255,200,200,0.85); line-height:1.9; font-weight:300; }
+  .grace-box { margin:0 16px 20px; background:var(--dark2); border-radius:0 0 12px 12px; padding:22px; border-top:2px solid var(--gold); }
+  .grace-label { font-size:14px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; font-weight:500; }
+  .grace-text { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:#fff; line-height:1.7; }
+  .grace-sub { margin-top:12px; font-size:18px; color:var(--gold-light); line-height:1.9; font-weight:300; }
+  .tabs { display:flex; margin:0 16px; gap:4px; }
+  .tab { flex:1; padding:12px 4px; font-size:18px; font-weight:500; text-align:center; background:var(--parchment2); color:var(--text-light); border:none; border-radius:8px 8px 0 0; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans JP',sans-serif; }
+  .tab.active { background:var(--dark); color:var(--gold); }
+  .panel { margin:0 16px 24px; background:#fff; border-radius:0 0 12px 12px; padding:22px; display:none; border:1px solid var(--parchment2); border-top:none; }
+  .panel.active { display:block; animation:fadeIn 0.3s ease; }
+  .misread-box { background:#fff5f5; border:1px solid #ffcccc; border-radius:10px; padding:18px; margin-bottom:24px; }
+  .misread-label { font-size:16px; letter-spacing:2px; color:var(--accent); font-weight:600; margin-bottom:10px; }
+  .misread-text { font-size:20px; color:var(--text); line-height:1.9; }
+  .note-point { margin-bottom:24px; padding-bottom:24px; border-bottom:1px dashed var(--parchment2); }
+  .note-point:last-child { border-bottom:none; margin-bottom:0; }
+  .note-tag { display:inline-block; background:var(--dark); color:var(--gold); font-size:15px; letter-spacing:1px; padding:4px 10px; border-radius:4px; margin-bottom:10px; font-weight:500; }
+  .note-tag.red { background:var(--red-dark); color:#ffaaaa; }
+  .note-text { font-size:20px; color:var(--text); line-height:1.9; }
+  .note-verse-ref { margin-top:8px; font-size:18px; color:var(--accent); font-style:italic; }
+  .btn-row { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .tts-btn { display:inline-flex; align-items:center; gap:6px; background:var(--dark); color:var(--gold); border:none; border-radius:20px; padding:8px 16px; font-size:16px; font-weight:500; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans JP',sans-serif; }
+  .tts-btn:hover { background:#2e1f12; }
+  .tts-btn.playing { background:var(--accent); color:#fff; }
+  .verse-btn { display:inline-flex; align-items:center; gap:6px; background:var(--accent); color:#fff; border:none; border-radius:20px; padding:8px 16px; font-size:16px; font-weight:500; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans JP',sans-serif; }
+  .verse-btn:hover { background:#a02020; }
+  .verse-btn.open { background:var(--dark2); color:var(--gold-light); }
+  .verse-box { display:none; margin-top:12px; background:#fefcf7; border:1px solid var(--gold-light); border-left:4px solid var(--gold); border-radius:8px; padding:16px 18px; animation:slideDown 0.3s ease; }
+  .verse-box.open { display:block; }
+  .verse-item { margin-bottom:14px; }
+  .verse-item:last-child { margin-bottom:0; }
+  .verse-item-ref { font-size:15px; font-weight:600; color:var(--accent); margin-bottom:4px; }
+  .verse-item-text { font-family:'Noto Serif JP',serif; font-size:18px; color:var(--text); line-height:1.9; }
+  @keyframes slideDown { from{opacity:0;max-height:0;transform:translateY(-8px)} to{opacity:1;max-height:2000px;transform:translateY(0)} }
+  .day-card { margin-bottom:20px; border-left:3px solid var(--gold); padding-left:16px; }
+  .day-card.red { border-left-color:var(--accent); }
+  .day-label { font-size:16px; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:6px; }
+  .day-card.red .day-label { color:var(--accent); }
+  .day-theme { font-family:'Noto Serif JP',serif; font-size:22px; font-weight:700; color:var(--text); margin-bottom:8px; }
+  .day-content { font-size:20px; color:var(--text-light); line-height:1.9; }
+  .day-verse { margin-top:8px; font-size:18px; color:var(--accent); font-style:italic; }
+  .question-intro { background:var(--dark); border-radius:10px; padding:20px; margin-bottom:22px; text-align:center; }
+  .question-intro-top { font-size:15px; letter-spacing:2px; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
+  .question-intro-text { font-family:'Noto Serif JP',serif; font-size:21px; font-weight:600; color:#fff; line-height:1.8; }
+  .question-card { margin-bottom:18px; background:var(--parchment); border-radius:10px; padding:18px; border:1px solid var(--parchment2); }
+  .question-card.red { border-left:4px solid var(--accent); }
+  .question-card.gold { border-left:4px solid var(--gold); }
+  .q-number { display:inline-block; width:30px; height:30px; background:var(--dark); color:var(--gold); font-size:15px; font-weight:700; border-radius:50%; text-align:center; line-height:30px; margin-bottom:10px; }
+  .q-text { font-family:'Noto Serif JP',serif; font-size:21px; font-weight:600; color:var(--text); line-height:1.7; margin-bottom:10px; }
+  .q-guide { font-size:18px; color:var(--text-light); line-height:1.8; padding-left:14px; border-left:2px solid var(--gold-light); }
+  .q-prayer { margin-top:22px; background:var(--dark); border-radius:10px; padding:18px; text-align:center; }
+  .q-prayer-label { font-size:15px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .q-prayer-text { font-size:20px; color:#fff; line-height:1.9; font-weight:300; }
+  .now-playing { display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--dark); color:var(--gold); padding:10px 22px; border-radius:30px; font-size:16px; font-weight:500; box-shadow:0 4px 20px rgba(0,0,0,0.3); z-index:100; white-space:nowrap; }
+  .now-playing.show { display:block; animation:fadeIn 0.3s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px) translateX(-50%)} to{opacity:1;transform:translateY(0) translateX(-50%)} }
+  .footer { text-align:center; padding:18px; font-size:16px; color:var(--text-light); letter-spacing:1px; margin-bottom:60px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">礼拝の復習</div>
+  <div class="header-title">さばきの理由</div>
+  <div class="header-ref">ローマ人への手紙 2:12–16</div>
+  <div class="gold-bar"></div>
+</div>
+
+<div class="tension-box">
+  <div class="tension-label">まず直視すべき問い</div>
+  <div class="tension-text">律法を知らない人は<br>どうさばかれるのか？</div>
+  <div class="tension-sub">
+    聖書を読んだことのない人、聖書を知らずに死んだ人。<br>
+    神は不公平ではないのか。この問いに聖書は答えます。
+  </div>
+</div>
+<div class="grace-box">
+  <div class="grace-label">しかし — 聖書が宣言する真実</div>
+  <div class="grace-text">良心がすでに律法の役割を果たしている<br>そしてその良心さえ守れる人は誰もいない</div>
+  <div class="grace-sub">
+    「義人はいない。一人もいない」（ローマ 3:10）<br>
+    <strong style="color:var(--gold)">だからこそ、すべての人にキリストが必要です。</strong>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('notes', this)">説教の核心</button>
+  <button class="tab" onclick="showTab('weekly', this)">週の黙想</button>
+  <button class="tab" onclick="showTab('sharing', this)">グループ分かち合い</button>
+</div>
+
+<div class="panel active" id="notes">
+
+  <div class="misread-box">
+    <div class="misread-label">⚠ さばきの基準を整理する</div>
+    <div class="misread-text">
+      罪とは神の律法に反すること。では律法を知らない人は？<br>
+      聖書の答えは「良心が律法の代わりをする」です。<br>
+      良心を守れば救われるのではなく、その良心さえ守れる人が誰もいないということが問題です。
+    </div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'intro')"><span class="icon">🔊</span> 聴く</button>
+    </div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag red">良心 — 律法の代わり</div>
+    <div class="note-text">律法を受けていない異邦人には、良心が律法の役割を果たします。生まれつき与えられた良心は、誰かに教わらなくても自然と罪の意識を与えます。良心の水準は人によって異なりますが、どんなに未開な人でも、幼い子どもでも、最低限の良心は持っています。凶悪犯が平然として見えても、実際には良心はあります。ただ麻痺しているだけです。</div>
+    <div class="note-verse-ref">ローマ 2:14–15</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'point1')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'point1')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point1"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag red">その良心さえ守れる人は誰もいない</div>
+    <div class="note-text">良心を守れば救われると言いたいのではありません。全人類を通じて、その不完全な低い水準の良心さえ完全に守った人は一人もいないということです。だから偽善が生まれます。良心は守るべきだという自尊心があるのに、実際には守れない。それを隠すために嘘の上に嘘を重ねる。それが偽善です。</div>
+    <div class="note-verse-ref">ローマ 3:10–12</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'point2')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'point2')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point2"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">15点と59点 — どちらも不合格</div>
+    <div class="note-text">律法を知っている人と良心だけで生きた人。さばきの重さは違います。しかしどちらも神のさばきを免れません。15点で不合格になった人も、59点で不合格になった人も、合格できなかったことに変わりはありません。神の栄光に届かない限り、すべての人が等しく神の怒りの下にあります。</div>
+    <div class="note-verse-ref">ルカ 12:47–48 / ローマ 3:23</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'point3')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'point3')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point3"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">怒りは神の悲しみ</div>
+    <div class="note-text">「義人はいない。一人もいない」という宣言は、罪の軽重を比べる言葉ではありません。罪だらけの人類に向けた神の怒りと悲しみの表現です。律法が目指しているのは神の聖さと義への渇望。神は人間に、神のかたちとして栄光を現す存在になってほしかった。その期待が裏切られ続けている痛みが、神の怒りとして表れています。</div>
+    <div class="note-verse-ref">詩篇 90:9 / ローマ 3:10–12</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'point4')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'point4')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-point4"></div>
+  </div>
+
+  <div class="note-point">
+    <div class="note-tag">救われた者の使命</div>
+    <div class="note-text">私たちはその怒りの下から救い出されました。しかし今もその怒りの下にいる人たちがいます。神の怒りを和らげたいという思いで、その人たちに救いの道を示しましょう。それが伝道の動機となるべきです。</div>
+    <div class="note-verse-ref">ローマ 2:4 / ローマ 5:1</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'close')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'close')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-close"></div>
+  </div>
+
+</div>
+
+<div class="panel" id="weekly">
+
+  <div class="day-card red">
+    <div class="day-label">月曜日</div>
+    <div class="day-theme">良心の声に耳を傾ける</div>
+    <div class="day-content">今日、良心の声がした瞬間がありましたか。その声を無視しましたか、それとも従いましたか。良心は神が与えてくださった律法の反映です。その声を大切にしながら、今日一日を過ごしてください。</div>
+    <div class="day-verse">ローマ 2:15 —「良心が証人となり」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'mon')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'mon')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-mon"></div>
+  </div>
+
+  <div class="day-card red">
+    <div class="day-label">火曜日</div>
+    <div class="day-theme">偽善に気づく</div>
+    <div class="day-content">良心を守るべきだとわかっているのに、実際には守れない。それを隠すために見せかけの善さを装っていないでしょうか。今日、自分の中の偽善に正直に気づいてみましょう。気づくことが変わる第一歩です。</div>
+    <div class="day-verse">ローマ 3:10 —「義人はいない。一人もいない」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'tue')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'tue')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-tue"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">水曜日</div>
+    <div class="day-theme">誰もが神の怒りの下にいた</div>
+    <div class="day-content">15点でも59点でも不合格は不合格。神の栄光に届かない限り、すべての人が神の怒りの下にいます。かつて自分もその中にいたことを思い出してください。そして今もそこにいる人たちへの憐れみを持ちましょう。</div>
+    <div class="day-verse">ローマ 3:23 —「すべての人は罪を犯した」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'wed')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'wed')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-wed"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">木曜日</div>
+    <div class="day-theme">神の怒りの意味を考える</div>
+    <div class="day-content">神の怒りは処罰への衝動ではなく、愛する者への悲しみです。人間が神のかたちとして栄光を現すことを願っておられた。その期待が裏切られ続けている痛みです。今日、神の心をもう少し深く理解してみましょう。</div>
+    <div class="day-verse">詩篇 90:9 —「我らの生涯は御怒りの中に過ぎ」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'thu')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'thu')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-thu"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">金曜日</div>
+    <div class="day-theme">神の怒りを和らげたいという動機</div>
+    <div class="day-content">伝道の動機は何ですか。義務感ですか、それとも神の悲しみを共に担いたいという思いですか。今日、まだ神を知らない周りの人を思い浮かべてください。神はその人のことを今も痛く思っておられます。</div>
+    <div class="day-verse">ローマ 2:4 —「神の慈愛があなたを悔い改めに導く」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'fri')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'fri')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-fri"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">土曜日</div>
+    <div class="day-theme">救われた者の感謝を新たに</div>
+    <div class="day-content">神の怒りの下から救い出された。この事実を今週どれほど感じましたか。詩篇90篇の「我らの生涯は御怒りの中に過ぎ」という言葉が、かつての自分の姿です。そこから救われた恵みに感謝しながら、明日の礼拝を準備しましょう。</div>
+    <div class="day-verse">ローマ 5:1 —「信仰によって義と認められた私たちは」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'sat')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'sat')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-sat"></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-label">礼拝準備</div>
+    <div class="day-theme">今週を振り返りながら</div>
+    <div class="day-content">今週、自分の良心の声に正直でしたか。神の怒りの意味を少し深く理解できましたか。救われた者として、今もその怒りの下にいる人たちへの思いを持って、今日の礼拝に臨みましょう。</div>
+    <div class="day-verse">詩篇 100:4 —「感謝しながら、その門に入れ」</div>
+    <div class="btn-row">
+      <button class="tts-btn" onclick="speak(this,'sun')"><span class="icon">🔊</span> 聴く</button>
+      <button class="verse-btn" onclick="toggleVerse(this,'sun')"><span class="icon">📖</span> 聖句を確認</button>
+    </div>
+    <div class="verse-box" id="vb-sun"></div>
+  </div>
+
+</div>
+
+<div class="panel" id="sharing">
+  <div class="question-intro">
+    <div class="question-intro-top">分かち合いの中心テーマ</div>
+    <div class="question-intro-text">
+      律法を知っていても知らなくても<br>
+      すべての人が神のさばきの下にある。<br>
+      その理由と、救われた者の使命を考えましょう。
+    </div>
+  </div>
+
+  <div class="question-card red">
+    <div class="q-number">1</div>
+    <div class="q-text">「良心が律法の代わりをする」という説明を聞いて、どう感じましたか？あなたの良心が最も強く語りかけてくる場面はどんなときですか？</div>
+    <div class="q-guide">分かち合いの方向 → 具体的な経験を正直に。良心の声を無視した経験、従った経験、どちらも大切です。</div>
+  </div>
+
+  <div class="question-card red">
+    <div class="q-number">2</div>
+    <div class="q-text">偽善はなぜ生まれるのでしょうか。守れない良心を守っているように見せたい、という経験はありますか？</div>
+    <div class="q-guide">分かち合いの方向 → 正直に。偽善を認めることは弱さではなく、正直さです。その正直さがキリストへの依存を深めます。</div>
+  </div>
+
+  <div class="question-card gold">
+    <div class="q-number">3</div>
+    <div class="q-text">「15点も59点も不合格は同じ」という言葉はあなたにどう響きましたか？神の怒りとはどんなものだと理解しましたか？</div>
+    <div class="q-guide">分かち合いの方向 → 神の怒りを処罰への衝動ではなく、愛する者への悲しみとして理解する方向へ。</div>
+  </div>
+
+  <div class="question-card gold">
+    <div class="q-number">4</div>
+    <div class="q-text">今もまだ神の怒りの下にいる人が身近にいますか。その人のために神の悲しみを担う思いで、今週どんな一歩を踏み出せますか？</div>
+    <div class="q-guide">分かち合いの方向 → 具体的な名前を挙げて。祈りで終わりましょう。</div>
+  </div>
+
+  <div class="q-prayer">
+    <div class="q-prayer-label">ともに祈って終わりましょう</div>
+    <div class="q-prayer-text">
+      良心さえ守れない罪人の私たちを<br>
+      神の怒りの下から救い出してくださった恵みに感謝し<br>
+      今もその怒りの下にいる人たちのために<br>
+      神の悲しみを担う者となれるよう<br>
+      ともに祈ります。
+    </div>
+  </div>
+</div>
+
+<div id="nowPlaying" class="now-playing">🔊 再生中...</div>
+<div class="footer">ローマ人への手紙 2:12–16 · さばきの理由</div>
+
+<script>
+const verseData = {
+  point1: [
+    { ref: 'ローマ 2:14–15', text: '律法を持たない異邦人が、生まれながらにして律法の命じることを行う場合には、律法を持たなくても、自分自身が自分に対する律法です。そのような人は、律法の要求が自分の心に記されていることを示しています。その良心も証言し、また心の思いも、互いに訴えたり、あるいは弁明したりします。' }
+  ],
+  point2: [
+    { ref: 'ローマ 3:10–12', text: '「義人はいない。一人もいない。悟りのある人はいない。神を求める人はいない。すべての人が迷い出て、みな等しく無駄な者となった。善を行う人はいない。一人もいない。」' }
+  ],
+  point3: [
+    { ref: 'ルカ 12:47–48', text: '主人の心を知っていながら、準備せず、また主人の望みどおりにしなかったしもべは、ひどくぶたれます。しかし、知らないでぶたれるようなことをしたしもべは、軽くぶたれるだけです。多く与えられた者は多く求められ、多く委ねられた者は多く要求されます。' }
+  ],
+  point4: [
+    { ref: '詩篇 90:9', text: '私たちの日々はみな、御怒りの中に過ぎ去り、私たちの齢は、ため息のように終わります。' }
+  ],
+  close: [
+    { ref: 'ローマ 5:1', text: 'ですから、信仰によって義と認められた私たちは、私たちの主イエス・キリストによって、神との平和を持っています。' }
+  ],
+  mon: [
+    { ref: 'ローマ 2:15', text: '律法の要求が自分の心に記されていることを示しています。その良心も証言し、また心の思いも、互いに訴えたり、あるいは弁明したりします。' }
+  ],
+  tue: [
+    { ref: 'ローマ 3:10', text: '「義人はいない。一人もいない。」' }
+  ],
+  wed: [
+    { ref: 'ローマ 3:23', text: 'すべての人は罪を犯して、神の栄光を受けられなくなっています。' }
+  ],
+  thu: [
+    { ref: '詩篇 90:9', text: '私たちの日々はみな、御怒りの中に過ぎ去り、私たちの齢は、ため息のように終わります。' }
+  ],
+  fri: [
+    { ref: 'ローマ 2:4', text: '神の慈愛があなたを悔い改めに導くことも知らないで、その豊かな慈愛と忍耐と寛容を軽んじているのですか。' }
+  ],
+  sat: [
+    { ref: 'ローマ 5:1', text: '信仰によって義と認められた私たちは、私たちの主イエス・キリストによって、神との平和を持っています。' }
+  ],
+  sun: [
+    { ref: '詩篇 100:4', text: '感謝しながら、その門に入れ。賛美しながら、その大庭に入れ。感謝して、御名をほめよ。' }
+  ]
+};
+
+const ttsTexts = {
+  intro: `今週の説教のテーマは「さばきの理由」です。まずこんな疑問を考えてみましょう。聖書を一度も読んだことのない人、生涯イエスの名前さえ聞かずに死んだ人、そういう人はどうさばかれるのでしょうか。不公平ではないか、と感じる方もいるかもしれません。聖書はこの問いにちゃんと答えています。律法を受けていない人には、良心が律法の代わりをするというのです。ただし、ここで大切なのは、良心を守れば救われるということではありません。そうではなく、その不完全な良心さえ完全に守れた人が一人もいない、ということが問題なのです。`,
+  point1: `ローマ人への手紙 二章十四節と十五節を見てください。律法を受けていない異邦人が、生まれながらにして律法の命じることを行う場合には、自分自身が自分に対する律法です、とあります。誰かに教わらなくても、人間には生まれつき良心が与えられています。嘘をついたとき、誰かを傷つけたとき、自然と心が痛む。あれが良心の声です。もちろん良心の水準は人によって違います。育ちや環境によって高くもなり、低くもなります。凶悪犯が平然としているように見えても、実は良心はあります。ただ長年にわたって無視し続けた結果、麻痺してしまっているだけです。神はすべての人に、最低限の良心を与えてくださっています。`,
+  point2: `では、良心さえ守れば救われるのでしょうか。そうではありません。ローマ人への手紙 三章十節はこう言います。義人はいない、一人もいない、と。これはパウロの個人的な意見ではありません。神がパウロに啓示してくださった言葉です。つまり、全人類を通じて、その不完全で低い水準の良心さえ完全に守った人は、一人もいなかった、ということです。なぜ偽善が生まれるのか考えたことがありますか。良心くらいは守るべきだという自尊心があるのに、実際には守れない。それを隠すために、善人のように振る舞う。これが偽善です。偽善は嘘の上に嘘を重ねることです。だからイエス様は偽善を鋭く批判されました。`,
+  point3: `律法を知っている人と、良心だけで生きた人。さばきの重さは違います。ルカによる福音書 十二章四十七節と四十八節にこうあります。主人の心を知っていながら準備しなかったしもべは、ひどくぶたれます。しかし知らないでぶたれるようなことをしたしもべは、軽くぶたれるだけです。これは、知っていた人の責任がより重いということです。しかしここで大切なのは、どちらも罰を受けるということです。十五点で不合格になった人も、五十九点で不合格になった人も、合格できなかったことに変わりはありません。神の栄光に届かない限り、すべての人が等しく神の怒りの下にあります。`,
+  point4: `「義人はいない、一人もいない」という言葉は、罪の軽重を比べているのではありません。これは罪だらけの人類に向けた、神の怒りと悲しみの表現です。神の怒りとは何でしょうか。それは単なる処罰への衝動ではありません。神は人間を、神のかたちとして造られました。神の栄光を現し、神を喜ぶ存在として造られました。その大切な人間が、神を無視して罪に染まった人生を送り続けている。その期待が裏切られ続けている痛みが、神の怒りとして表れているのです。詩篇 九十篇九節は言います。私たちの日々はみな、御怒りの中に過ぎ去り、と。これがかつての私たちの姿でした。`,
+  close: `今日の説教をまとめます。律法を知っていても知らなくても、すべての人が神のさばきの下にあります。そしてその怒りの下から救い出されたのが、今ここにいる私たちです。しかし今もまだ、その怒りの下にいる人たちがいます。神はその人たちのことを、今も痛く思っておられます。私たちが伝道するのは義務だからではありません。神の悲しみを共に担いたい、その思いから自然と湧き出てくるものであってほしいのです。神の怒りを和らげたいという心で、まだ神を知らない人たちに救いの道を示していきましょう。`,
+  mon: `月曜日の黙想です。今日、良心の声がした瞬間がありましたか。ちょっとした嘘をついた後の、あの小さな居心地の悪さ。誰かを傷つけた後の、あの心の痛み。それが良心の声です。神が与えてくださった、律法の反映です。今日一日、その声に少し正直に向き合ってみましょう。無視せずに、耳を傾けてみてください。`,
+  tue: `火曜日の黙想です。守るべきだとわかっているのに守れない。それを隠すために善人のように振る舞う。これが偽善です。今日、自分の中の偽善に正直に気づいてみましょう。気づくことが変わる第一歩です。そして気づいたなら、それをそのまま神の前に持っていってください。神は正直な人を喜ばれます。`,
+  wed: `水曜日の黙想です。十五点でも五十九点でも不合格は不合格。神の栄光に届かない限り、すべての人が神の怒りの下にいます。かつて自分もその中にいたことを思い出してください。そしてキリストがそこから救い出してくださったことを、改めて感謝しましょう。今日、まだそこにいる人への憐れみを心の中に育ててください。`,
+  thu: `木曜日の黙想です。神の怒りとは何でしょうか。処罰したいという衝動ではありません。愛する者への深い悲しみです。人間を神のかたちに造り、栄光を現してほしかった。その願いが裏切られ続けている痛みです。今日、神の心をもう少し深く理解してみましょう。神が悲しんでおられる、という視点で周りの人を見てみてください。`,
+  fri: `金曜日の黙想です。あなたが伝道する動機は何ですか。義務感でしょうか。それとも神の悲しみを共に担いたいという思いでしょうか。今日、まだ神を知らない周りの人を思い浮かべてください。神はその人のことを今も痛く思っておられます。その神の心を受け取って、今日一歩踏み出しましょう。`,
+  sat: `土曜日の黙想です。神の怒りの下から救い出された。この事実を今週どれほど感じましたか。詩篇九十篇の「我らの生涯は御怒りの中に過ぎ」という言葉が、かつての自分の姿でした。そこから救われた。これは当たり前のことではありません。その恵みへの感謝を新たにしながら、明日の礼拝を準備しましょう。`,
+  sun: `礼拝準備の黙想です。今週、自分の良心の声に正直でしたか。神の怒りの意味を少し深く理解できましたか。救われた者として、今もその怒りの下にいる人たちへの思いを持って、今日の礼拝に臨みましょう。詩篇 百篇の四節は言います。感謝しながら、その門に入れ。`
+};
+
+function toggleVerse(btn,key){const box=document.getElementById('vb-'+key);const isOpen=box.classList.contains('open');document.querySelectorAll('.verse-box.open').forEach(b=>{b.classList.remove('open');b.innerHTML='';});document.querySelectorAll('.verse-btn.open').forEach(b=>{b.classList.remove('open');b.innerHTML='<span class="icon">📖</span> 聖句を確認';});if(!isOpen){const verses=verseData[key];if(!verses)return;let html='';verses.forEach(v=>{html+='<div class="verse-item"><div class="verse-item-ref">'+v.ref+'</div><div class="verse-item-text">'+v.text+'</div></div>';});box.innerHTML=html;box.classList.add('open');btn.classList.add('open');btn.innerHTML='<span class="icon">📖</span> 閉じる';}}
+function showTab(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');stopAudio();document.querySelectorAll('.verse-box.open').forEach(b=>{b.classList.remove('open');b.innerHTML='';});document.querySelectorAll('.verse-btn.open').forEach(b=>{b.classList.remove('open');b.innerHTML='<span class="icon">📖</span> 聖句を確認';});}
+let _audio=null;
+function stopAudio(){if(_audio){_audio.pause();_audio.currentTime=0;_audio=null;}window.speechSynthesis&&window.speechSynthesis.cancel();}
+function speak(btn,key){if(btn.classList.contains('playing')){stopAudio();btn.classList.remove('playing');btn.innerHTML='<span class="icon">🔊</span> 聴く';return;}document.querySelectorAll('.tts-btn.playing').forEach(b=>{b.classList.remove('playing');b.innerHTML='<span class="icon">🔊</span> 聴く';});stopAudio();function speakTTS(b,k){const text=ttsTexts[k];if(!text||!window.speechSynthesis)return;const sentences=text.match(/[^。！？]+[。！？]*/g)||[text];let i=0;b.classList.add('playing');b.innerHTML='<span class="icon">⏹</span> 止める';function next(){if(i>=sentences.length||!b.classList.contains('playing')){b.classList.remove('playing');b.innerHTML='<span class="icon">🔊</span> 聴く';return;}const u=new SpeechSynthesisUtterance(sentences[i++].trim());u.lang='ja-JP';u.rate=0.92;u.onend=next;window.speechSynthesis.speak(u);}next();}const isLocal=location.protocol==='file:';if(!isLocal){let fell=false;function fallback(){if(fell)return;fell=true;_audio=null;speakTTS(btn,key);}_audio=new Audio('audio/'+key+'.mp3');btn.classList.add('playing');btn.innerHTML='<span class="icon">⏹</span> 止める';_audio.onended=()=>{btn.classList.remove('playing');btn.innerHTML='<span class="icon">🔊</span> 聴く';_audio=null;};_audio.onerror=fallback;_audio.play().catch(fallback);}else{speakTTS(btn,key);}}
+window.speechSynthesis&&(window.speechSynthesis.onvoiceschanged=()=>{window.speechSynthesis.getVoices();});
+</script>
+</body>
+</html>
